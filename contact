@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GlowUpPro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .alternative-contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .alternative-contact a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .alternative-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form id="contactForm" action="https://formsubmit.co/your-email@example.com" method="POST">
+            <!-- Anti-spam honeypot field -->
+            <input type="text" name="_honey" style="display:none">
+            <!-- Disable Captcha verification -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- Form fields -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+        <div class="alternative-contact">
+            <p>Alternatively, you can email us directly at <a href="mailto:support@glowuppro.ai">support@glowuppro.ai</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Basic form validation
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var message = document.getElementById('message').value.trim();
+
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill out all fields.");
+                event.preventDefault(); // Prevent the form from submitting
+            }
+
+            // Additional spam protection (honeypot field)
+            if (document.querySelector('[name="_honey"]').value !== "") {
+                // If the honeypot field is filled out, it's likely a bot submission
+                alert("Spam detected!");
+                event.preventDefault(); // Prevent the form from submitting
+            }
+        });
+    </script>
+
+</body>
+</html>
